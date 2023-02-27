@@ -3,6 +3,7 @@ import hashlib
 import json
 from flask import Flask, jsonify
 
+#building the blockchain
 class Blockchain:
     
     def __init__(self):
@@ -30,3 +31,7 @@ class Blockchain:
             else:
                 new_proof += 1
         return new_proof
+    
+    def hash(self, block):
+        encoded_block = json.dumps(block, sort_keys = True).encode()
+        return hashlib.sha256(encoded_block).hexidgest()
